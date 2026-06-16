@@ -3,6 +3,7 @@ package design_patterns;
 //eager (final keyword --> it prevent the reinitialize the variable named instance and private constructor --> prevent the creation of instance outside the class)
 
 public class Logger {
+	
 	private static final Logger instance = new Logger();
 	
 	private Logger() {}
@@ -16,6 +17,7 @@ public class Logger {
 //lazy (Synchronized keyword --> make it safe in multi-threaded app)
 
 public class Logger{
+	
 	private static Logger instance;
 	
 	private Logger() {};
