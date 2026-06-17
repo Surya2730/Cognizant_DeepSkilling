@@ -1,0 +1,55 @@
+Factory Method: 
+          Sub classes decide which object to create, the parent class defines the factory method as an template, and each subclasses overrides
+it to produce their own specific type.
+
+
+// abstract class
+
+abstract public class DocumentFactory {
+	public abstract void createDocument();            // template
+}
+
+
+// concrete class
+
+public class CreateWordDocument extends DocumentFactory{
+	@Override
+	public void createDocument() {
+		System.out.println("Word Document Created Successfully");
+	}
+}
+
+
+public class CreatePDFDocument extends DocumentFactory{
+	@Override
+	public void createDocument() {
+		System.out.println("PDF Created Successfully");
+	}
+}
+
+
+public class CreateExcelDocument extends DocumentFactory{
+	@Override
+	public void createDocument() {
+		System.out.println("Excel Created Successfully");
+	}
+}
+
+package design_patterns;
+
+public class Test {
+	public static void main(String[] args) {
+		DocumentFactory df = new CreateWordDocument();
+		df.createDocument();
+		DocumentFactory df1 = new CreatePDFDocument();
+		df1.createDocument();
+		DocumentFactory df2 = new CreateExcelDocument();
+		df2.createDocument();
+	}
+}
+
+
+o/p:
+Word Document Created Successfully
+PDF Created Successfully
+Excel Created Successfully
