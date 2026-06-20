@@ -1,0 +1,69 @@
+import java.util.*;
+
+public class Product{
+    public int product_id;
+    public String product_name;
+    public int quantity;
+    public double price;
+    
+    Product(int product_id, String product_name, int quantity, double price){
+        this.product_id = product_id;
+        this.product_name = product_name;
+        this.quantity = quantity;
+        this.price = price;
+    }    
+
+    public int getProductId(){
+        return product_id;
+    }
+    public String getProductName(){
+        return product_name;
+    }
+    public int getQuantity(){
+        return quantity;
+    }
+    public double getPrice(){
+        return price;
+    }
+}
+
+class Main{
+    public static void main(String[] args){
+        LinkedList<Product> products = new LinkedList<>();
+        Product p1 = new Product(1, "Laptop", 10, 69999.99);
+        Product p2 = new Product(2, "Smartphone", 20, 14999.99);
+        Product p3 = new Product(3, "Headphones", 30, 2199.99);
+
+        products.add(p1);
+        products.add(p2);
+        products.add(p3);
+
+        for(Product p : products){
+            System.out.println("Product ID: " + p.getProductId());
+            System.out.println("Product Name: " + p.getProductName());
+            if(p.getProductName().equals("Laptop")){
+                p.price = 64999.99; // Update price for Laptop
+            }
+            System.out.println("Quantity: " + p.getQuantity());
+            System.out.println("Price: Rs." + p.getPrice());
+            System.out.println();
+        }
+    }
+}
+
+
+Output:
+Product ID: 1
+Product Name: Laptop
+Quantity: 10
+Price: Rs.69999.99
+
+Product ID: 2
+Product Name: Smartphone
+Quantity: 20
+Price: Rs.14999.99
+
+Product ID: 3
+Product Name: Headphones
+Quantity: 30
+Price: Rs.2199.99
