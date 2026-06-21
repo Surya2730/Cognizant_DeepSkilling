@@ -1,0 +1,85 @@
+import java.util.*;
+
+public class Product{
+    public int product_id;
+    public String product_name;
+    public int quantity;
+    public double price;
+    public String Category;
+    
+    Product(int product_id, String product_name, int quantity, double price, String category){
+        this.product_id = product_id;
+        this.product_name = product_name;
+        this.quantity = quantity;
+        this.price = price;
+        this.Category = category;
+    }    
+
+    public int getProductId(){
+        return product_id;
+    }
+    public String getProductName(){
+        return product_name;
+    }
+    public int getQuantity(){
+        return quantity;
+    }
+    public double getPrice(){
+        return price;
+    }
+    public String getCategory(){
+        return Category;
+    }
+}
+
+class Main{
+    public static void main(String[] args){
+        LinkedList<Product> products = new LinkedList<>();
+        Product p1 = new Product(1, "Laptop", 10, 69999.99, "Electronics");
+        Product p2 = new Product(2, "Shirt", 20, 1499.99, "Clothing");
+        Product p3 = new Product(3, "Headphones", 30, 2199.99, "Electronics");
+        Product p4 = new Product(4, "Vegetable Packets", 30, 2199.99, "Groceries");
+        
+        products.add(p1);
+        products.add(p2);
+        products.add(p3);
+        products.add(p4);
+
+        // Linear Search for Electronics category by using Category as key
+
+        // for(Product p : products){
+        //     if(p.getCategory().equals("Electronics")){
+        //         System.out.println("Product ID: " + p.getProductId());
+        //         System.out.println("Product Name: " + p.getProductName());
+        //         System.out.println("Quantity: " + p.getQuantity());
+        //         System.out.println("Price: Rs." + p.getPrice());
+        //         System.out.println("Category: " + p.getCategory());
+        //         System.out.println();
+        //     }    
+        // }
+
+
+        // Binary Search for Product ID 4 using Product ID as key.
+
+        int low = 0, high = products.size() - 1;
+        int targetId = 4;
+        while(low <= high){
+            int mid = low + (high - low) / 2;
+            if(products.get(mid).getProductId() == targetId){
+                System.out.println("Product ID: " + products.get(mid).getProductId());
+                System.out.println("Product Name: " + products.get(mid).getProductName());
+                System.out.println("Quantity: " + products.get(mid).getQuantity());
+                System.out.println("Price: Rs." + products.get(mid).getPrice());
+                System.out.println("Category: " + products.get(mid).getCategory());
+                break;
+            }
+            else if(products.get(mid).getProductId() < targetId){
+                low = mid + 1;
+            }
+            else{
+                high = mid - 1;
+            }
+        }
+
+    }
+}
