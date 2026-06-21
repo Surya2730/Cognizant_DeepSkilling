@@ -83,3 +83,27 @@ class Main{
 
     }
 }
+
+
+Output:
+
+// For Linear Search
+Product ID: 1
+Product Name: Laptop
+Quantity: 10
+Price: Rs.69999.99
+Category: Electronics
+
+Product ID: 3
+Product Name: Headphones
+Quantity: 30
+Price: Rs.2199.99
+Category: Electronics
+
+
+// For Binary Search
+Product ID: 4
+Product Name: Vegetable Packets
+Quantity: 30
+Price: Rs.2199.99
+Category: Groceries
