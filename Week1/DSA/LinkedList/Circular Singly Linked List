@@ -1,0 +1,53 @@
+// Circular Singly Linked List
+
+package LinkedList;
+
+public class CircularSinglyLinkedList {
+	Node head = null;
+	
+	public void createNode(int v) {
+		Node newnode = new Node(v);
+		if(head == null) {
+			head = newnode;
+			newnode.next = head;
+		}
+		if(head.next == head) {
+			head.next = newnode;
+			newnode.next = head;
+		}
+		Node tptr = head;
+		do {
+			tptr = tptr.next;
+		}while(tptr.next != head);
+		tptr.next = newnode;
+		newnode.next = head;
+	}
+	
+	public void displayNode() {
+		Node tptr = head;
+		do {
+			System.out.print(tptr.val + " ");
+			tptr = tptr.next;
+		}while(tptr != head);
+	}
+}
+
+// Main.java
+public class Main {
+	public static void main(String[] args) {
+    CircularSinglyLinkedList csll = new CircularSinglyLinkedList();
+		csll.createNode(27);
+		csll.createNode(30);
+		csll.createNode(19);
+		csll.createNode(21);
+		csll.createNode(29);
+		
+		csll.displayNode();
+	}
+}
+
+
+// Output:
+
+27 30 19 21 29 
+Is Search Element Found: true
