@@ -1,0 +1,36 @@
+package design_patterns;
+
+import java.util.*;
+public class FinancialForecasting {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int value = scan.nextInt();
+		int n = scan.nextInt();
+		double[] growth = new double[n];
+		for(int i = 0; i < n; i++) {
+			growth[i] = scan.nextDouble();
+		}
+		System.out.printf("%.2f", forecast(value, growth, n));
+	}
+	
+	public static double forecast(int value, double[] growth, int n) {
+		if(n == 0) {
+			return value;
+		}
+		
+		return forecast(value, growth, n-1) * (1 + growth[n-1]);
+	}
+}
+
+
+Input:
+
+5000
+3
+0.05
+0.08
+0.12
+
+Output:
+
+6350.40
