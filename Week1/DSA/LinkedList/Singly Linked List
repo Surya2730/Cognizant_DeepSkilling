@@ -1,0 +1,92 @@
+// Node.java
+
+package LinkedList;
+
+public class Node{
+	public int val;
+	public Node next;
+	
+	Node(int val){
+		this.val = val;
+		next = null;
+	}
+	
+	Node(int val, Node next){
+		this.val = val;
+		this.next = next;
+	}
+	
+	public int getVal() {
+		return val;
+	}
+	
+	public Node getNext() {
+		return next;
+	}
+}
+
+// SingleLinkedList.java
+
+package LinkedList;
+
+public class SingleLinkedList {
+	
+	Node head = null;
+	public void CreateNode(int v) {
+		Node newnode = new Node(v);
+		if(head == null) {
+			head = newnode;
+			return;
+		}
+		
+		Node tptr = head;
+		while(tptr.next != null) {
+			tptr = tptr.next;
+		}
+		
+		tptr.next = newnode;
+	}
+	
+	public void displayNode() {
+		Node tptr = head;
+		while(tptr != null) {
+			System.out.print(tptr.val + " ");
+			tptr = tptr.next;
+		}
+	}
+	
+	public boolean SearchNode(int v) {
+		Node tptr = head;
+		while(tptr != null) {
+			if(tptr.val == v) {
+				return true;
+			}
+			tptr = tptr.next;
+		}
+		return false;
+	}
+}
+
+// Main.java
+
+package LinkedList;
+
+public class Main {
+	public static void main(String[] args) {
+		SingleLinkedList sll = new SingleLinkedList();
+		sll.CreateNode(27);
+		sll.CreateNode(30);
+		sll.CreateNode(19);
+		sll.CreateNode(21);
+		sll.CreateNode(29);
+		
+		sll.displayNode();
+		System.out.println();
+		System.out.println("Is Search Element Found: " + sll.SearchNode(21));
+	}
+}
+
+Output:
+27 30 19 21 29 
+Is Search Element Found: true
+
