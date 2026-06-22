@@ -1,0 +1,101 @@
+// Node.java
+
+package LinkedList;
+
+public class Node{
+	public int val;
+	public Node prev;
+	public Node next;
+	
+	Node(int val){
+		this.val = val;
+		prev = null;
+		next = null;
+	}
+	
+	Node(int val, Node prev, Node next){
+		this.val = val;
+		this.prev = prev;
+		this.next = next;
+	}
+	                
+	public int getVal() {
+		return val;
+	}
+	
+	public Node getPrev() {
+		return prev;
+	}
+	
+	public Node getNext() {
+		return next;
+	}
+}
+
+// DoublyLinkedList.java
+
+package LinkedList;
+
+public class DoublyLinkedList {
+	Node head = null;
+	
+	public void createNode(int v) {
+		Node newnode = new Node(v);
+		
+		if(head == null) {
+			head = newnode;
+			return;
+		}
+		
+		Node tptr = head;
+		while(tptr.next != null) {
+			tptr = tptr.next;
+		}
+		tptr.next = newnode;
+		newnode.prev = tptr;
+	}
+	
+	public void traverseForward() {
+		Node tptr = head;
+		while(tptr != null) {
+			System.out.print(tptr.val + " ");
+			tptr = tptr.next;
+		}
+	}
+	
+	public void traverseBackward() {
+		Node tptr = head;
+		while(tptr.next != null) {
+			tptr = tptr.next;
+		}
+		while(tptr != null) {
+			System.out.print(tptr.val + " ");
+			tptr = tptr.prev;
+		}
+	}
+}
+
+
+// Main.java
+public class Main {
+	public static void main(String[] args) {
+    DoublyLinkedList dll = new DoublyLinkedList();
+		dll.createNode(27);
+		dll.createNode(30);
+		dll.createNode(19);
+		dll.createNode(21);
+		dll.createNode(29);
+		System.out.println("Forward Traversal:");
+		dll.traverseForward();
+		System.out.println();
+		System.out.println("Backward Traversal:");
+		dll.traverseBackward();
+  }
+}
+
+
+Output:
+Forward Traversal:
+27 30 19 21 29 
+Backward Traversal:
+29 21 19 30 27
