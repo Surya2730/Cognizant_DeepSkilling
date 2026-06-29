@@ -1,0 +1,44 @@
+3. Anonymous Blocks vs Named Blocks
+Anonymous Block
+
+An anonymous block is a PL/SQL block without a name.
+
+Characteristics
+Executed only once.
+Not stored in the database.
+Cannot be reused directly.
+Example
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('Hello World');
+END;
+/
+Use Cases
+Testing code
+Simple calculations
+Temporary tasks
+Named Block
+
+A named block has a name and is stored in the database.
+
+Examples:
+
+Procedures
+Functions
+Packages
+Triggers
+Example (Procedure)
+CREATE OR REPLACE PROCEDURE greet
+AS
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('Hello World');
+END;
+/
+
+Execute:
+
+EXEC greet;
+Characteristics
+Stored in database.
+Can be reused.
+Easier maintenance.
+Better for large applications.
