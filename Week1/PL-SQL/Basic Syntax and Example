@@ -44,5 +44,7 @@ EXCEPTION
 
 END;
 /
+
 Output
+
 Division by zero error
