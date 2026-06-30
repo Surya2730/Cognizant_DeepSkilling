@@ -1,0 +1,48 @@
+1. DECLARE Section (Optional)
+
+Used to declare variables, constants, cursors, etc.
+
+DECLARE
+   emp_name VARCHAR2(50);
+   salary NUMBER;
+
+2. BEGIN Section (Mandatory)
+
+Contains executable statements.
+
+BEGIN
+   salary := 50000;
+   DBMS_OUTPUT.PUT_LINE(salary);
+END;
+/
+
+3. EXCEPTION Section (Optional)
+
+Handles runtime errors.
+
+EXCEPTION
+   WHEN ZERO_DIVIDE THEN
+      DBMS_OUTPUT.PUT_LINE('Cannot divide by zero');
+
+4. END Section (Mandatory)
+
+Marks the end of the block.
+
+END;
+/
+Complete Example
+DECLARE
+   num1 NUMBER := 10;
+   num2 NUMBER := 0;
+   result NUMBER;
+BEGIN
+   result := num1 / num2;
+
+EXCEPTION
+   WHEN ZERO_DIVIDE THEN
+      DBMS_OUTPUT.PUT_LINE('Division by zero error');
+
+END;
+/
+Output
+Division by zero error
