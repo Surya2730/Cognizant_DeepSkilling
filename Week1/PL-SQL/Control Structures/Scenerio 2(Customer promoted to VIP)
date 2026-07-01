@@ -21,3 +21,25 @@ BEGIN
     COMMIT;
 END;
 /
+
+
+Method 2:
+
+DECLARE
+
+BEGIN
+    FOR cust IN(
+	select customer_id, balance
+	from Customers
+	where balance > 10000
+    )
+    LOOP
+      UPDATE Customers 
+      SET isVIP = 'True'
+      where customer_id = cust.customer_id;
+    END LOOP;
+
+    commit;	
+
+END;
+/
