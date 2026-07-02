@@ -1,0 +1,25 @@
+There are two types of cursor:
+1.) Implicit 
+2.) Explicit
+
+Basic Syntax of Explicit Cursor:
+DECLARE
+
+    CURSOR emp_cursor IS
+        SELECT name
+        FROM employees;
+
+    emp_name VARCHAR2(30);
+
+BEGIN
+
+    OPEN emp_cursor;
+
+    FETCH emp_cursor INTO emp_name;
+
+    DBMS_OUTPUT.PUT_LINE(emp_name);
+
+    CLOSE emp_cursor;
+
+END;
+/
