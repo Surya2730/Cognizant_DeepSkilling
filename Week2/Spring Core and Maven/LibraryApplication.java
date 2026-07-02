@@ -18,3 +18,8 @@ public class LibraryApplication {
     }
 
 }
+
+
+Output:
+Book Service is working.
+Book Repository is working.
