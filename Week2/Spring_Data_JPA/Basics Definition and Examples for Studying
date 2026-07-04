@@ -1,0 +1,669 @@
+Spring Core and Maven – Cognizant Interview Notes
+
+
+1. What is Spring Framework?
+
+Spring Framework is an open-source Java framework used for building enterprise-level applications. 
+It simplifies Java development by providing features like Dependency Injection (DI), Aspect-Oriented Programming (AOP), transaction management, 
+MVC architecture, security, and database integration.
+
+Definition
+
+Spring is a lightweight, loosely coupled, and modular framework that makes Java application development easier.
+
+Why was Spring introduced?
+
+Before Spring, Java developers mainly used EJB (Enterprise JavaBeans).
+
+Problems with EJB:
+
+Complex configuration
+Heavyweight
+Difficult testing
+Tight coupling
+Requires application server
+
+Spring solved these by providing
+
+Lightweight framework
+POJO programming
+Dependency Injection
+Easy testing
+Modular architecture
+Features of Spring
+Lightweight
+Open Source
+POJO based
+Dependency Injection
+Aspect-Oriented Programming (AOP)
+Transaction Management
+MVC Framework
+ORM Support
+Security Integration
+Easy Testing
+
+
+2. Architecture of Spring
+
+Spring consists of many modules.
+
+Spring Framework
+
+│
+├── Core Container
+│     ├── Core
+│     ├── Beans
+│     ├── Context
+│     └── Expression Language
+│
+├── AOP
+│
+├── Data Access
+│     ├── JDBC
+│     ├── Transactions
+│     ├── ORM
+│
+├── Web
+│     ├── MVC
+│     ├── WebSocket
+│
+├── Security
+│
+├── Test
+
+
+3. Spring Core
+
+Spring Core is the heart of Spring Framework.
+
+It provides
+
+IoC Container
+Dependency Injection
+Bean Management
+
+Without Spring Core, Spring cannot work.
+
+Bean
+
+A Bean is simply a Java object managed by Spring.
+
+Example
+
+public class Student {
+
+    public void display() {
+        System.out.println("Hello");
+    }
+
+}
+
+Normally
+
+Student s = new Student();
+
+Spring creates this object automatically.
+
+4. IoC (Inversion of Control)
+Definition
+
+Normally developers create objects.
+
+In Spring,
+
+Spring Container creates and manages objects.
+
+This is called Inversion of Control.
+
+Without IoC
+
+Student s = new Student();
+
+With IoC
+
+Spring Container
+       ↓
+Creates Student Object
+       ↓
+Provides wherever required
+Advantages
+Loose coupling
+Better code reuse
+Easy testing
+Easy maintenance
+
+
+5. Dependency
+
+Suppose
+
+class Car {
+
+    Engine engine = new Engine();
+
+}
+
+Car depends on Engine.
+
+Engine is called Dependency.
+
+6. Dependency Injection (DI)
+
+Instead of creating dependencies inside the class,
+
+Spring injects them.
+
+Without DI
+
+class Car {
+
+    Engine engine = new Engine();
+
+}
+
+Car is tightly coupled.
+
+With DI
+
+class Car {
+
+    private Engine engine;
+
+    public Car(Engine engine) {
+        this.engine = engine;
+    }
+
+}
+
+Spring provides Engine object.
+
+Types of Dependency Injection
+1. Constructor Injection (Most Preferred)
+@Component
+class Engine {
+
+}
+
+@Component
+class Car {
+
+    private Engine engine;
+
+    @Autowired
+    public Car(Engine engine) {
+        this.engine = engine;
+    }
+
+}
+2. Setter Injection
+@Component
+class Car {
+
+    private Engine engine;
+
+    @Autowired
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
+}
+3. Field Injection (Not Recommended)
+@Component
+class Car {
+
+    @Autowired
+    Engine engine;
+
+}
+
+Interview:
+
+Field Injection is discouraged because
+
+Difficult testing
+Hidden dependency
+Violates encapsulation
+7. IoC Container
+
+The IoC Container manages
+
+Bean creation
+Dependency Injection
+Bean lifecycle
+
+Main Containers
+
+BeanFactory
+Basic Container
+Lazy initialization
+Lightweight
+ApplicationContext
+
+Most commonly used.
+
+Extra features
+
+Event handling
+Internationalization
+Bean lifecycle
+AOP support
+
+Interview:
+
+ApplicationContext extends BeanFactory.
+
+8. Bean Lifecycle
+Bean Created
+
+↓
+
+Dependency Injected
+
+↓
+
+@PostConstruct
+
+↓
+
+Bean Ready
+
+↓
+
+Business Logic
+
+↓
+
+@PreDestroy
+
+↓
+
+Bean Destroyed
+
+Example
+
+@PostConstruct
+public void init(){
+
+}
+
+@PreDestroy
+public void destroy(){
+
+}
+
+
+9. Spring Bean Scopes
+Scope	Description
+Singleton	One object per container
+Prototype	New object every request
+Request	One object per HTTP request
+Session	One object per user session
+Application	Entire web application
+
+Interview
+
+Default scope?
+
+Answer:
+
+Singleton
+
+10. Spring Modules
+Core Module
+
+Responsible for
+
+Bean creation
+DI
+IoC
+AOP Module
+
+AOP = Aspect Oriented Programming
+
+Used for
+
+Logging
+Security
+Transactions
+Exception Handling
+
+Instead of writing logging everywhere
+
+Method 1
+Method 2
+Method 3
+
+↓
+
+Common Logging Aspect
+Data Access Module
+
+Simplifies database operations.
+
+Contains
+
+JDBC
+Transactions
+
+Example
+
+JdbcTemplate
+
+Removes
+
+Connection creation
+Statement creation
+Resource closing
+ORM Module
+
+Integrates Spring with
+
+Hibernate
+JPA
+MyBatis
+
+Instead of writing SQL
+
+Use Java Objects.
+
+MVC Module
+
+Used for Web Applications.
+
+MVC
+
+Model
+↓
+
+View
+↓
+
+Controller
+
+Example
+
+Browser
+
+↓
+
+Controller
+
+↓
+
+Service
+
+↓
+
+Repository
+
+↓
+
+Database
+Security Module
+
+Provides
+
+Authentication
+Authorization
+Password Encryption
+JWT
+OAuth
+Test Module
+
+Supports
+
+JUnit
+Mockito
+Integration Testing
+11. Spring MVC Flow
+User Request
+
+↓
+
+DispatcherServlet
+
+↓
+
+Controller
+
+↓
+
+Service
+
+↓
+
+Repository
+
+↓
+
+Database
+
+↓
+
+Controller
+
+↓
+
+View
+
+↓
+
+Browser
+
+DispatcherServlet is the Front Controller.
+
+12. Advantages of Dependency Injection
+
+Without DI
+
+Car
+
+↓
+
+Engine
+
+↓
+
+Battery
+
+↓
+
+Fuel
+
+Very tightly coupled.
+
+With DI
+
+Spring injects all dependencies.
+
+Advantages
+
+Loose Coupling
+Easy Testing
+Reusability
+Easy Maintenance
+Better Design
+
+
+13. Maven
+
+Maven is a Build Automation Tool.
+
+Used for
+
+Managing dependencies
+Compiling code
+Testing
+Packaging
+Deploying
+
+Without Maven
+
+Need to manually download
+
+Spring
+Hibernate
+MySQL Driver
+JUnit
+
+With Maven
+
+Simply write
+
+<dependency>
+
+</dependency>
+
+Everything downloads automatically.
+
+14. pom.xml
+
+The heart of Maven.
+
+Contains
+
+Project information
+Dependencies
+Plugins
+Build configuration
+
+Example
+
+<project>
+
+    <groupId>com.example</groupId>
+
+    <artifactId>StudentApp</artifactId>
+
+    <version>1.0</version>
+
+</project>
+15. Maven Directory Structure
+Project
+
+src
+ ├── main
+ │      ├── java
+ │      └── resources
+ │
+ └── test
+        └── java
+
+pom.xml
+
+
+16. Maven Lifecycle
+validate
+
+↓
+
+compile
+
+↓
+
+test
+
+↓
+
+package
+
+↓
+
+verify
+
+↓
+
+install
+
+↓
+
+deploy
+
+Most Important
+
+Phase	Purpose
+compile	Compile Java
+test	Run Tests
+package	Create JAR/WAR
+install	Store in Local Repository
+deploy	Upload to Remote Repository
+
+
+17. Maven Repositories
+Local Repository
+C:\Users\<username>\.m2
+
+Stores downloaded dependencies.
+
+Central Repository
+
+Official Maven Repository.
+
+Downloads libraries from the internet.
+
+Remote Repository
+
+Company Repository
+
+Example
+
+Nexus
+Artifactory
+
+
+18. Spring + Maven Example Dependency
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>6.2.0</version>
+</dependency>
+19. Why Spring is Better than Traditional Java?
+Traditional Java	Spring
+Tight Coupling	Loose Coupling
+Manual Object Creation	Automatic Bean Creation
+Difficult Testing	Easy Testing
+More Boilerplate	Less Boilerplate
+Manual Dependency Management	Dependency Injection
+Hard Maintenance	Easy Maintenance
+
+
+20. Frequently Asked Interview Questions (with Answers)
+Q1. What is Spring?
+
+Answer: Spring is a lightweight, open-source Java framework that simplifies enterprise application development using features like IoC, DI, AOP, MVC, transaction management, and integration with databases.
+
+Q2. What is IoC?
+
+Answer: Inversion of Control is a design principle where the Spring container manages the creation and lifecycle of objects instead of the developer creating them manually.
+
+Q3. What is Dependency Injection?
+
+Answer: Dependency Injection is a technique where Spring provides required objects (dependencies) to a class, reducing tight coupling and improving testability.
+
+Q4. Which type of Dependency Injection is preferred?
+
+Answer: Constructor Injection, because it ensures required dependencies are available when the object is created and makes testing easier.
+
+Q5. What is a Spring Bean?
+
+Answer: A Spring Bean is a Java object that is created, configured, and managed by the Spring IoC container.
+
+Q6. What is the difference between BeanFactory and ApplicationContext?
+
+Answer: BeanFactory is the basic IoC container with lazy initialization, while ApplicationContext is more feature-rich, supporting events, internationalization, AOP, and eager singleton initialization.
+
+Q7. What is the default bean scope in Spring?
+
+Answer: Singleton.
+
+Q8. What is AOP used for?
+
+Answer: Aspect-Oriented Programming separates cross-cutting concerns such as logging, security, transaction management, and exception handling from business logic.
+
+Q9. What is Maven?
+
+Answer: Maven is a build automation and dependency management tool that compiles, tests, packages, and manages Java project libraries using the pom.xml file.
+
+Q10. What is pom.xml?
+
+Answer: pom.xml (Project Object Model) is Maven's configuration file containing project metadata, dependencies, plugins, and build settings.
