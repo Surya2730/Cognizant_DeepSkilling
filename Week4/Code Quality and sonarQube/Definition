@@ -1,0 +1,139 @@
+
+What is Code Quality?
+
+Code Quality refers to how well-written, maintainable, reliable, efficient, secure, and readable the source code is. 
+High-quality code is easier to understand, test, debug, and modify.
+
+Characteristics of Good Code Quality
+Readable – Easy to understand by other developers.
+Maintainable – Easy to update or fix.
+Reusable – Code can be reused in different parts of the application.
+Efficient – Uses memory and CPU resources effectively.
+Reliable – Produces correct results with fewer bugs.
+Secure – Avoids vulnerabilities and security issues.
+Testable – Easy to write unit and integration tests.
+Example
+
+❌ Poor Quality Code
+
+public int c(int a, int b) {
+    return a + b;
+}
+
+✅ Good Quality Code
+
+public int calculateTotalMarks(int mathMarks, int scienceMarks) {
+    return mathMarks + scienceMarks;
+}
+
+The second example is more readable because of meaningful method and variable names.
+
+What is SonarQube?
+
+SonarQube is an open-source code quality and security analysis tool that continuously inspects source code for bugs, security vulnerabilities, code smells, and duplicated code.
+
+It helps developers improve code quality before deploying applications.
+
+Definition
+
+SonarQube is a static code analysis tool that automatically analyzes source code to detect bugs, security vulnerabilities, code smells, and maintainability issues.
+
+Features of SonarQube
+    Static Code Analysis
+    Detects Bugs
+    Finds Security Vulnerabilities
+    Detects Code Smells
+    Measures Code Coverage
+    Detects Duplicate Code
+    Generates Quality Reports
+    Supports Continuous Integration (CI/CD)
+    Supports multiple languages like Java, Python, C#, JavaScript, C++, and more
+
+What SonarQube Checks
+    Bugs
+      Null Pointer Exceptions
+      Infinite loops
+      Incorrect conditions
+    Security Vulnerabilities
+      SQL Injection
+      Cross-Site Scripting (XSS)
+      Hardcoded passwords
+    Code Smells
+      Long methods
+      Unused variables
+      Duplicate logic
+      High complexity
+    Code Coverage
+      Percentage of code covered by unit tests.
+    Duplicated Code
+      Identifies repeated code blocks.
+
+SonarQube Metrics
+    Reliability
+    Security
+    Maintainability
+    Coverage
+    Duplications
+    Technical Debt
+
+How SonarQube Works:
+
+Developer writes code
+          │
+          ▼
+Build Project (Maven/Gradle)
+          │
+          ▼
+Sonar Scanner scans code
+          │
+          ▼
+Results sent to SonarQube Server
+          │
+          ▼
+Dashboard displays issues and reports
+
+Advantages
+    Improves code quality
+    Detects bugs early
+    Improves application security
+    Enforces coding standards
+    Reduces technical debt
+    Integrates with Jenkins, GitHub, GitLab, Azure DevOps, etc.
+    Provides detailed reports and dashboards
+
+
+Example Maven Command
+
+mvn clean verify sonar:sonar
+
+This command:
+
+  Builds the project
+  Runs tests
+  Sends the analysis report to SonarQube
+  Interview Definition (1-Mark Answer)
+
+Code Quality:
+
+  Code quality is the measure of how readable, maintainable, reliable, secure, and efficient a software application's source code is.
+
+SonarQube:
+
+  SonarQube is a static code analysis tool that analyzes source code to identify bugs, security vulnerabilities, code smells, duplicate code, and maintainability issues, helping developers improve software quality.
+
+Frequently Asked Interview Questions
+
+1. Is SonarQube a testing tool?
+No. It is a static code analysis tool. It analyzes source code without executing the application.
+
+2. What is a Code Smell?
+A code smell is a sign of poor coding practices that may not be a bug but makes the code harder to maintain (e.g., long methods, duplicated code, unused variables).
+
+3. What is Static Code Analysis?
+Static code analysis is the process of examining source code for defects and quality issues without running the program.
+
+4. Does SonarQube fix issues automatically?
+No. It detects and reports issues. Developers must review and fix them.
+
+5. Which languages does SonarQube support?
+It supports Java, JavaScript, Python, C#, C++, Kotlin, TypeScript, Go, PHP, and many others.
